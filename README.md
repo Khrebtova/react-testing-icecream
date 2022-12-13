@@ -32,3 +32,7 @@ add to the `.gitignore`:
 .vscode
 .eslintcache
 `
+
+# Bootstrap installation 
+
+`npm install react-bootstrap bootstrap `
