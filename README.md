@@ -74,3 +74,17 @@ https://mswjs.io/docs/getting-started/mocks/rest-api
     afterAll(() => server.close())
     `
 
+# install AXIOS to retrieve data from the server
+
+`npm install axios`
+
+import axios and use it as fetch request 
+axios
+      .get(`http://localhost:3030/${optionType}`)
+      .then((response) => setItems(response.data))
+      .catch((error) => {
+        console.log(error);
+      });
+      
+update package.json with :
+`"test": "react-scripts test --transformIgnorePatterns \"node_modules/(?!axios)/\""`
