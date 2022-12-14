@@ -32,7 +32,7 @@ const SummaryForm = () => {
                 label={checkboxLabel}
             />
         </Form.Group>
-        <Button variant="primary" type="submit" disabled={!checkboxChecked}>
+        <Button variant='primary' type="submit" disabled={!checkboxChecked}>
             Confirm Order
         </Button>      
     </Form>
