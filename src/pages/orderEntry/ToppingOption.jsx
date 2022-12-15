@@ -1,7 +1,17 @@
-import React from 'react'
+import  { React, useState } from 'react'
 import Col from 'react-bootstrap/Col'
+import Form from 'react-bootstrap/Form'
+import Row from 'react-bootstrap/Row'
+import { useOrderDetails } from '../../context/OrderDetails'
 
 const ToppingOption = ({name, imagePath}) => {
+  const [checked, setChecked] = useState(false) 
+  const { updateOrderDetails } = useOrderDetails()
+  
+  const handleChange = (event) => {
+    setChecked(event.target.checked)
+    updateOrderDetails(name, event.target.checked, 'toppings')
+  }
   return (
     <Col sx={12} sm={6} md={4} lg={3} style={{textAlign: 'center'}}>
       <img 
@@ -9,8 +19,17 @@ const ToppingOption = ({name, imagePath}) => {
         alt={`${name} topping`}
         style={{width: '75%'}} 
       />
-      <p>{name}</p>
-      <input type="checkbox" />      
+      <Form.Group controlId={`${name}-count`} as={Row} style={{marginTop: '10px'}}>
+        <Form.Label column xs="6" style={{textAlign: 'right'}}>
+          {name}
+        </Form.Label>        
+          <input  
+            type='checkbox'
+            checked={checked}       
+            onChange={handleChange}             
+          />
+        
+      </Form.Group>  
     </Col>
   )
 }

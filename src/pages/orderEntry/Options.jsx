@@ -38,7 +38,7 @@ const Options = ({ optionType }) => {
     <>
       <h2>{title}</h2>
       <p>{price} each</p>
-      <p>Your total for {optionType} : {total}</p>
+      <p>{title} total: {total}</p>
       <Row>
         {renderItems}
       </Row>

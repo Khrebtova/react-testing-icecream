@@ -1,7 +1,7 @@
 import React from "react";
 import { OrderDetailsProvider } from "./context/OrderDetails";
 import { Container } from "react-bootstrap";
-import SummaryForm from "./pages/summary/SummaryForm";
+import OrderSummary from "./pages/summary/OrderSummary";
 import OrderEntry from "./pages/orderEntry/OrderEntry";
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
       <OrderDetailsProvider>
         {/* summary page and entry page need provider to access the context  */}
         <OrderEntry />
-        {/* <SummaryForm /> */}
+        <OrderSummary />        
       </OrderDetailsProvider>
       {/* OrderEntry does not need provider */}
     </Container>

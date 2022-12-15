@@ -88,3 +88,26 @@ axios
       
 update package.json with :
 `"test": "react-scripts test --transformIgnorePatterns \"node_modules/(?!axios)/\""`
+
+# wrap tests in context provider
+
+create dir : test-utils
+create file: testing-library-utils.jsx
+
+with code:
+
+import { render  } from "@testing-library/react";
+import { OrderDetailsProvider } from "../context/OrderDetails";
+
+const renderWithContext = (ui, options) => {
+  render(ui, { wrapper: OrderDetailsProvider, ...options });
+}
+
+// re-export everything
+export * from "@testing-library/react";
+
+// override render method
+export { renderWithContext as render }
+
+
+them update all test (what needed) by importing all methods like render and screen and waitFor from that file. 
