@@ -10,7 +10,7 @@ const ToppingOption = ({name, imagePath}) => {
   
   const handleChange = (event) => {
     setChecked(event.target.checked)
-    updateOrderDetails(name, event.target.checked, 'toppings')
+    updateOrderDetails(name, event.target.checked ? 1 : 0, 'toppings')
   }
   return (
     <Col sx={12} sm={6} md={4} lg={3} style={{textAlign: 'center'}}>
@@ -19,16 +19,8 @@ const ToppingOption = ({name, imagePath}) => {
         alt={`${name} topping`}
         style={{width: '75%'}} 
       />
-      <Form.Group controlId={`${name}-count`} as={Row} style={{marginTop: '10px'}}>
-        <Form.Label column xs="6" style={{textAlign: 'right'}}>
-          {name}
-        </Form.Label>        
-          <input  
-            type='checkbox'
-            checked={checked}       
-            onChange={handleChange}             
-          />
-        
+      <Form.Group controlId={`${name}-topping-checkbox`} style={{marginTop: '10px', marginBottom: '10px'}} >
+        <Form.Check type='checkbox' label={name} checked={checked} onChange={handleChange} />             
       </Form.Group>  
     </Col>
   )
