@@ -13,13 +13,13 @@ const ToppingOption = ({name, imagePath}) => {
     updateOrderDetails(name, event.target.checked ? 1 : 0, 'toppings')
   }
   return (
-    <Col sx={12} sm={6} md={4} lg={3} style={{textAlign: 'center'}}>
+    <Col sx={12} sm={6} md={4} lg={2} style={{textAlign: 'center'}}>
       <img 
         src={`http://localhost:3030/${imagePath}`} 
         alt={`${name} topping`}
         style={{width: '75%'}} 
       />
-      <Form.Group controlId={`${name}-topping-checkbox`} style={{marginTop: '10px', marginBottom: '10px'}} >
+      <Form.Group controlId={`${name}-topping-checkbox`} style={{marginTop: '10px', marginBottom: '10px', textAlign: 'center'}} >
         <Form.Check type='checkbox' label={name} checked={checked} onChange={handleChange} />             
       </Form.Group>  
     </Col>

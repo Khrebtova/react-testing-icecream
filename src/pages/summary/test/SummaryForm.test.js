@@ -1,6 +1,6 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen } from "../../../test-utils/testing-library-utils";
 import userEvent from "@testing-library/user-event";
-
+import OrderConfirmation from "../../confirmation/OrderConfirmation";
 import SummaryForm from "../SummaryForm";
 
 test("initial conditions", () => {
@@ -53,3 +53,4 @@ test("popover responds to hover", () => {
   user.unhover(termsAndConditions);
   expect(nullPopover).not.toBeInTheDocument();
 });
+

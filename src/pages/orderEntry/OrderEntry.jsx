@@ -2,8 +2,9 @@ import React from 'react'
 import Options from './Options'
 import { useOrderDetails } from '../../context/OrderDetails'
 import { formatCurrency } from '../../utilities/index'
+import { Button } from 'react-bootstrap'
 
-const OrderEntry = () => {
+const OrderEntry = ({goToNextPhase}) => {
   const { totals } = useOrderDetails()
   return (
     <div>
@@ -11,6 +12,7 @@ const OrderEntry = () => {
         <Options optionType="scoops" />
         <Options optionType="toppings" />
         <h2>Grand total: {formatCurrency(totals.grandTotal)}</h2>
+        <Button variant="primary" onClick={goToNextPhase}>Order Sundae!</Button>
     </div>
   )
 }
