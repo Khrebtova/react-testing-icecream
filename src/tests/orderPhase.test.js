@@ -48,12 +48,12 @@ test("order phases for happy path", async () => {
   const loading = screen.getByRole("heading", { name: "Loading..." });
   expect(loading).toBeInTheDocument();
 
-  // confirm order number on confirmation page 
+  // confirm order number on confirmation page
   const orderNumber = await screen.findByText(/Order number:/i, {
     exact: false,
   });
   expect(orderNumber).toBeInTheDocument();
-  
+
   // expect loading to disappear
   const notLOading = screen.queryByRole("heading", { name: "Loading..." });
   expect(notLOading).not.toBeInTheDocument();
@@ -73,4 +73,29 @@ test("order phases for happy path", async () => {
   //do we need to await anything to avoid test errors?
   await screen.findByRole("spinbutton", { name: "Vanilla" });
   await screen.findByRole("checkbox", { name: "Cherries" });
+});
+
+test("Toppings header is not on summary page if no toppings ordered", async () => {
+  render(<App />);
+
+  // add ice cream scoops
+  const vanillaInput = await screen.findByRole("spinbutton", {
+    name: "Vanilla",
+  });
+  userEvent.clear(vanillaInput);
+  userEvent.type(vanillaInput, "1");
+
+  // find and click order button
+  const orderSummaryButton = await screen.findByRole("button", {
+    name: "Order Sundae!",
+  });
+  userEvent.click(orderSummaryButton);
+
+  //check that the scoops are in the document
+  const scoopsHeader = await screen.findByText("Scoops :", { exact: false });
+  expect(scoopsHeader).toBeInTheDocument();
+
+  //check that the toppings header is not on the summary page
+  const noToppingsHeader = screen.queryByText("Toppings :", { exact: false });
+  expect(noToppingsHeader).not.toBeInTheDocument();
 });

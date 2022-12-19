@@ -21,7 +21,8 @@ const OrderSummary = ({ goToNextPhase, setOrderNumber }) => {
       <h1>Order Summary</h1>
       <h2>Scoops : {formatCurrency(totals.scoops)}</h2>
       <ul>{scoopsList}</ul>
-      <h2>Toppings : {formatCurrency(totals.toppings)}</h2>
+      { toppingsArray.length > 0 ? <h2>Toppings : {formatCurrency(totals.toppings)}</h2> : null}
+      {/* <h2>Toppings : {formatCurrency(totals.toppings)}</h2> */}
       <ul>{toppingsList}</ul>
       <h2>Grand Total : {formatCurrency(totals.grandTotal)}</h2>
       <SummaryForm
