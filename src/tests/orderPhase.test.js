@@ -44,11 +44,19 @@ test("order phases for happy path", async () => {
   });
   userEvent.click(confirmOrderButton);
 
-  // confirm order number on confirmation page
+  // confirm Loading appears before order number
+  const loading = screen.getByRole("heading", { name: "Loading..." });
+  expect(loading).toBeInTheDocument();
+
+  // confirm order number on confirmation page 
   const orderNumber = await screen.findByText(/Order number:/i, {
     exact: false,
   });
   expect(orderNumber).toBeInTheDocument();
+  
+  // expect loading to disappear
+  const notLOading = screen.queryByRole("heading", { name: "Loading..." });
+  expect(notLOading).not.toBeInTheDocument();
 
   //click new order button on confirmation page
   const newOrderButton = await screen.findByRole("button", {

@@ -111,3 +111,29 @@ export { renderWithContext as render }
 
 
 them update all test (what needed) by importing all methods like render and screen and waitFor from that file. 
+
+
+# Standard questions to ask before write new tests:
+
+1. what to render? 
+    - the smallest component possible 
+
+2. Do we need to pass any props ? 
+
+3. do we need to wrap the component ( for example in context provider)
+    - does the provider get used? 
+    - is it already wrapped within the component?
+
+4. Where should the test go? 
+    - which file should test go? 
+    - is it unit test? of functional?
+    - do we need new file? or they belong in existing file
+
+5. What to test? 
+    - what behavior that needs testing?
+
+6. How to test? 
+    - what queries and events? 
+
+7. Do we need await? 
+    - is there anything async going on ?
