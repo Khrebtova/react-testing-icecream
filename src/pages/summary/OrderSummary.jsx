@@ -13,7 +13,8 @@ const OrderSummary = ({ goToNextPhase, setOrderNumber, setOrderError }) => {
     </li>
   ));
 
-  const toppingsArray = Object.entries(orderDetails.toppings);
+  const toppingsArray = Object.keys(orderDetails.toppings);
+ 
   const toppingsList = toppingsArray.map((name) => <li key={name}>{name}</li>);
 
   return (
