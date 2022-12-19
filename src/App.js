@@ -7,6 +7,7 @@ import OrderConfirmation from "./pages/confirmation/OrderConfirmation";
 function App() {
   const [orderPhase, setOrderPhase] = React.useState("inProgress");
   const [orderNumber, setOrderNumber] = React.useState(null);
+  const [orderError, setOrderError] = React.useState(false);
 
   const goToNextPhase = () => {
     if (orderPhase === "inProgress") {
@@ -36,8 +37,8 @@ function App() {
     <Container>      
         <OrderDetailsProvider>          
           {orderPhase === 'inProgress' ? <OrderEntry goToNextPhase={goToNextPhase}/> : null}
-          {orderPhase === 'review' ? <OrderSummary  goToNextPhase={goToNextPhase} setOrderNumber={setOrderNumber}/> : null}
-          {orderPhase === 'final' ? <OrderConfirmation goToNextPhase={goToNextPhase} orderNumber={orderNumber} setOrderNumber={setOrderNumber}/> : null}
+          {orderPhase === 'review' ? <OrderSummary  goToNextPhase={goToNextPhase} setOrderNumber={setOrderNumber} setOrderError={setOrderError}/> : null}
+          {orderPhase === 'final' ? <OrderConfirmation goToNextPhase={goToNextPhase} orderNumber={orderNumber} setOrderNumber={setOrderNumber} orderError={orderError}/> : null}
         </OrderDetailsProvider>      
     </Container>
   );

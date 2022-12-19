@@ -3,7 +3,7 @@ import SummaryForm from "./SummaryForm";
 import { useOrderDetails } from "../../context/OrderDetails";
 import { formatCurrency } from "../../utilities";
 
-const OrderSummary = ({ goToNextPhase, setOrderNumber }) => {
+const OrderSummary = ({ goToNextPhase, setOrderNumber, setOrderError }) => {
   const { totals, orderDetails } = useOrderDetails();
 
   const scoopsArray = Object.entries(orderDetails.scoops);
@@ -28,6 +28,7 @@ const OrderSummary = ({ goToNextPhase, setOrderNumber }) => {
       <SummaryForm
         goToNextPhase={goToNextPhase}
         setOrderNumber={setOrderNumber}
+        setOrderError={setOrderError}
       />
     </div>
   );

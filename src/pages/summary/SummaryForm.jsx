@@ -5,7 +5,7 @@ import { Button, Form } from "react-bootstrap";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 
-const SummaryForm = ({ goToNextPhase, setOrderNumber }) => {
+const SummaryForm = ({ goToNextPhase, setOrderNumber, setOrderError }) => {
   const [checkboxChecked, setCheckboxChecked] = useState(false);
 
   const renderTooltip = (props) => (
@@ -22,7 +22,7 @@ const SummaryForm = ({ goToNextPhase, setOrderNumber }) => {
         setOrderNumber(response.data.orderNumber);
       })
       .catch((error) => {
-        console.log(error);
+        setOrderError(true);
       });
     goToNextPhase();
   };
