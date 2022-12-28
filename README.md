@@ -1,4 +1,7 @@
-# testing react 
+# Learning testing react 
+small ice cream app to learn RTL and Jest
+
+ans some of instructions for myself:
 
 # ESLint 
 `npm install eslint-plugin-testing-library eslint-plugin-jest-dom `
